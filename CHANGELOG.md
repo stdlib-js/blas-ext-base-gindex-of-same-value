@@ -22,6 +22,7 @@
 
 <details>
 
+-   [`97a25cb`](https://github.com/stdlib-js/stdlib/commit/97a25cba301263b4ae206940a37a6d02f8c9baf7) - **chore:** follow-up fixes for commits merged to `develop` [(#13327)](https://github.com/stdlib-js/stdlib/pull/13327) _(by Philipp Burckhardt)_
 -   [`0cf99ac`](https://github.com/stdlib-js/stdlib/commit/0cf99ac9ef01870d3dd74f510b454ad8bdd0fb55) - **feat:** add `blas/ext/base/gindex-of-same-value` [(#13293)](https://github.com/stdlib-js/stdlib/pull/13293) _(by Muhammad Haris, Athan Reines)_
 
 </details>
@@ -34,10 +35,11 @@
 
 ### Contributors
 
-A total of 2 people contributed to this release. Thank you to the following contributors:
+A total of 3 people contributed to this release. Thank you to the following contributors:
 
 -   Athan Reines
 -   Muhammad Haris
+-   Philipp Burckhardt
 
 </section>
 
