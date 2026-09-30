@@ -33,7 +33,7 @@ limitations under the License.
 
 [![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
 
-> Return the index of the first element in a strided array which has the same value as a provided search element.
+> Return the first index of an element in a strided array which has the same value as a specified search element.
 
 <!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
 
@@ -45,25 +45,37 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-ext-base-gindex-of-same-value
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import gindexOfSameValue from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@deno/mod.js';
-```
-
-You can also import the following named exports from the package:
-
-```javascript
-import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@deno/mod.js';
+var gindexOfSameValue = require( '@stdlib/blas-ext-base-gindex-of-same-value' );
 ```
 
 #### gindexOfSameValue( N, searchElement, x, strideX )
 
-Returns the index of the first element in a strided array which has the same value as a provided search element.
+Returns the first index of an element in a strided array which has the same value as a specified search element.
 
 ```javascript
 var x = [ -2.0, 1.0, 3.0, -5.0, 4.0, 0.0, -1.0, 3.0 ];
@@ -76,7 +88,7 @@ The function has the following parameters:
 
 -   **N**: number of indexed elements.
 -   **searchElement**: search element.
--   **x**: input array.
+-   **x**: input [`Array`][mdn-array] or [`typed array`][mdn-typed-array].
 -   **strideX**: stride length.
 
 If the function is unable to find a search element, the function returns `-1`.
@@ -100,22 +112,22 @@ var idx = gindexOfSameValue( 4, -1.0, x, 2 );
 Note that indexing is relative to the first index. To introduce an offset, use [`typed array`][mdn-typed-array] views.
 
 ```javascript
-import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@deno/mod.js';
+var Float64Array = require( '@stdlib/array-float64' );
 
-// Initial array...
+// Initial array:
 var x0 = new Float64Array( [ 1.0, -2.0, 3.0, -4.0, 5.0, -6.0 ] );
 
-// Create an offset view...
+// Create an offset view:
 var x1 = new Float64Array( x0.buffer, x0.BYTES_PER_ELEMENT*1 ); // start at 2nd element
 
-// Find index...
+// Find index:
 var idx = gindexOfSameValue( 3, -6.0, x1, 2 );
 // returns 2
 ```
 
 #### gindexOfSameValue.ndarray( N, searchElement, x, strideX, offsetX )
 
-Returns the index of the first element in a strided array which has the same value as a provided search element using alternative indexing semantics.
+Returns the first index of an element in a strided array which has the same value as a specified search element using alternative indexing semantics.
 
 ```javascript
 var x = [ -2.0, 1.0, 3.0, -5.0, 4.0, 0.0, -1.0, 3.0 ];
@@ -147,7 +159,8 @@ var idx = gindexOfSameValue.ndarray( 3, 3.0, x, 1, x.length-3 );
 
 ## Notes
 
--   When searching for a search element, the function checks for equality using the same value algorithm. As a consequence, `NaN` values are considered equal, and `-0` and `+0` are considered distinct.
+-   If `N <= 0`, both functions return `-1`.
+-   When searching for a search element, the functions check for equality using the same value algorithm. As a consequence, `NaN` values are considered equal, and `-0` and `+0` are considered distinct.
 -   Both functions support array-like objects having getter and setter accessors for array element access (e.g., [`@stdlib/array-base/accessor`][@stdlib/array/base/accessor]).
 
 </section>
@@ -163,8 +176,8 @@ var idx = gindexOfSameValue.ndarray( 3, 3.0, x, 1, x.length-3 );
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import discreteUniform from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@deno/mod.js';
-import gindexOfSameValue from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@deno/mod.js';
+var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
+var gindexOfSameValue = require( '@stdlib/blas-ext-base-gindex-of-same-value' );
 
 var x = discreteUniform( 10, -100, 100, {
     'dtype': 'generic'
@@ -204,7 +217,7 @@ console.log( idx );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -267,9 +280,11 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/blas-ext-base-gindex-of-same-value/main/LICENSE
 
+[mdn-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
-[@stdlib/array/base/accessor]: https://github.com/stdlib-js/array-base-accessor/tree/deno
+[@stdlib/array/base/accessor]: https://github.com/stdlib-js/array-base-accessor
 
 </section>
 
