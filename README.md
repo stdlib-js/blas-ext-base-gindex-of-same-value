@@ -52,13 +52,13 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import gindexOfSameValue from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@esm/index.mjs';
+import gindexOfSameValue from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@v0.0.0-esm/index.mjs';
 ```
 
 You can also import the following named exports from the package:
 
 ```javascript
-import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@esm/index.mjs';
+import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@v0.0.0-esm/index.mjs';
 ```
 
 #### gindexOfSameValue( N, searchElement, x, strideX )
@@ -170,7 +170,7 @@ var idx = gindexOfSameValue.ndarray( 3, 3.0, x, 1, x.length-3 );
 <script type="module">
 
 import discreteUniform from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@esm/index.mjs';
-import gindexOfSameValue from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@esm/index.mjs';
+import gindexOfSameValue from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gindex-of-same-value@v0.0.0-esm/index.mjs';
 
 var x = discreteUniform( 10, -100, 100, {
     'dtype': 'generic'
